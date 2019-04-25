@@ -43,7 +43,7 @@ export const closeFeed = (event) => {
 };
 
 
-const showNewFeatureFeed = (key, base, table) => {
+const showNewFeatureFeed = (key, base, table, origin) => {
   try {
     if (openState === false) {
     const overlay = build('div', [{ name: 'class', value: 'nff-overlay' }, { name: 'id', value: 'nff-overlay-id'}])
@@ -51,11 +51,18 @@ const showNewFeatureFeed = (key, base, table) => {
     const feedContainer = build('iframe', [
       { name: 'class', value: 'nff-container' },
       { name: 'id', value: 'nff-container-id' },
-      { name: 'src', value: `http://feature-feed.netlify.com?apiKey=${key}&base=${base}&table=${table}`},
+      { name: 'src', value: `http://localhost:3002?apiKey=${key}&base=${base}&table=${table}&origin=${origin}`},
     ]);
     feedContainer.addEventListener('click', () => event.stopPropagation())
     const body = document.querySelector('body');
     body.append(overlay);
+    window.addEventListener('message', (e) => {
+      console.log(e.origin)
+      console.log(e)
+      var task = e.data['task'];
+      console.log(task)
+      if(task = 'close') closeFeed()
+    })
     overlay.append(feedContainer)
     openState = true;
   } else {
@@ -75,10 +82,11 @@ const showNewFeatureFeed = (key, base, table) => {
       const key = feedButton.getAttribute('data-airtable-key');
       const base = feedButton.getAttribute('data-airtable-base');
       const table = feedButton.getAttribute('data-airtable-table');
+      const origin = window.location.href;
       if (!key || !base || !table) throw new Error('Please add config data to the script tag');
       initStyles()
       feedButton.addEventListener('click', () => {
-        showNewFeatureFeed(key, base, table)
+        showNewFeatureFeed(key, base, table, origin)
       });
   } catch (exception) {
     console.log(exception);
