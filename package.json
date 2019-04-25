@@ -1,6 +1,6 @@
 {
   "name": "feature-feed-init",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Describe feature-feed-init here",
   "main": "lib/index.js",
   "module": "es/index.js",
