@@ -57,6 +57,7 @@ const showNewFeatureFeed = (key, base, table, origin) => {
     const body = document.querySelector('body');
     body.append(overlay);
     window.addEventListener('message', (e) => {
+      console.log(e.origin)
       if(e.origin === 'https://feature-feed.netlify.com') {
         var task = e.data['task'];
         console.log(task)
