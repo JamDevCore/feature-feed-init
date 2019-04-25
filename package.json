@@ -1,6 +1,6 @@
 {
   "name": "feature-feed-init",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Describe feature-feed-init here",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -17,13 +17,30 @@
     "test:coverage": "nwb test --coverage",
     "test:watch": "nwb test --server"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "nwb": "0.23.x"
   },
-  "author": "",
-  "homepage": "",
+  "author": "JamesVitaly",
+  "homepage": "https://github.com/JamesVitaly/feature-feed-init#readme",
   "license": "MIT",
-  "repository": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesVitaly/feature-feed-init.git"
+  },
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "keywords": [
+    "new",
+    "features",
+    "features",
+    "whats",
+    "new",
+    "engagement"
+  ],
+  "bugs": {
+    "url": "https://github.com/JamesVitaly/feature-feed-init/issues"
+  }
 }
