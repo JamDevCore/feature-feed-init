@@ -51,7 +51,7 @@ const showNewFeatureFeed = (key, base, table, origin) => {
     const feedContainer = build('iframe', [
       { name: 'class', value: 'nff-container' },
       { name: 'id', value: 'nff-container-id' },
-      { name: 'src', value: `http://localhost:3002?apiKey=${key}&base=${base}&table=${table}&origin=${origin}`},
+      { name: 'src', value: `http://feature-feed.netlify.com?apiKey=${key}&base=${base}&table=${table}&origin=${origin}`},
     ]);
     feedContainer.addEventListener('click', () => event.stopPropagation())
     const body = document.querySelector('body');
