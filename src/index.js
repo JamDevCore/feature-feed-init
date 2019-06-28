@@ -8,7 +8,7 @@ const styles = `
   background: rgba(17, 103, 250, 0.5);
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 10000;
   animation: appear 0.1s;
 }
 
@@ -78,17 +78,20 @@ const showNewFeatureFeed = (key, base, table, origin) => {
 (function initFeed() {
   window.onload = function() {
     try {
-      const feedButton = document.querySelector('#nff-init');
-      if(!feedButton) throw new Error('No ID found: Add the id => feature-feed-init <= to a button')
-      const key = feedButton.getAttribute('data-airtable-key');
-      const base = feedButton.getAttribute('data-airtable-base');
-      const table = feedButton.getAttribute('data-airtable-table');
-      const origin = window.location.href;
+      var feedButtons = document.getElementsByClassName('nff-init');
+      feedButtons = Array.from(feedButtons)
+      if (!feedButtons[0]) throw new Error('No ID found: Add the id => feature-feed-init <= to a button');
+      var key = feedButtons[0].getAttribute('data-airtable-key');
+      var base = feedButtons[0].getAttribute('data-airtable-base');
+      var table = feedButtons[0].getAttribute('data-airtable-table');
+      var origin = window.location.href;
       if (!key || !base || !table) throw new Error('Please add config data to the script tag');
-      initStyles()
-      feedButton.addEventListener('click', () => {
-        showNewFeatureFeed(key, base, table, origin)
+      initStyles();
+      feedButtons.forEach((button) => {
+        button.addEventListener('click', function () {
+        showNewFeatureFeed(key, base, table, origin);
       });
+    })
   } catch (exception) {
     console.log(exception);
   }
