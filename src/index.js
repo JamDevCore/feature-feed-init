@@ -17,12 +17,18 @@ const styles = `
   position: fixed;
   right: 0;
   top: 0;
+  width: 324px;
   background: transparent;
-  width: 400px;
   height: 100vh;
   z-index: 1001;
 }
-`
+
+@media(min-width: 420px) {
+.nff-container {
+    width: 400px;
+  }
+}
+ `
 
 let openState = false;
 
