@@ -82,11 +82,10 @@ const showNewFeatureFeed = (key, base, table, origin) => {
 
 
 (function initFeed() {
-  window.onload = function() {
     try {
       var feedButtons = document.getElementsByClassName('nff-init');
       feedButtons = Array.from(feedButtons)
-      if (!feedButtons[0]) throw new Error('No ID found: Add the id => feature-feed-init <= to a button');
+      if (!feedButtons[0]) throw new Error('No ID found: Add the id => nff-init <= to a button');
       var key = feedButtons[0].getAttribute('data-airtable-key');
       var base = feedButtons[0].getAttribute('data-airtable-base');
       var table = feedButtons[0].getAttribute('data-airtable-table');
@@ -101,5 +100,4 @@ const showNewFeatureFeed = (key, base, table, origin) => {
   } catch (exception) {
     console.log(exception);
   }
-}
 }());
